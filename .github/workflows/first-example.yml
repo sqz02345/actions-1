@@ -1,0 +1,14 @@
+name: my first github project
+
+on: push
+
+jobs:
+    first_job:
+        runs-on :  ubuntu_latest
+        steps:
+        -   name: display message
+            run : echo "hello world"
+        -   name: show contents of file
+            run : ls -ltr
+        
+
