@@ -3,17 +3,14 @@ name: my first github project
 on: push
 
 jobs:
-    first_job:
-        runs-on :  ubuntu-latest
-        steps:
-        -   name: checkout repo
-        -   uses: actions/checkout@v4
-        -   name: display message
-            run: echo "hello world 123"
-        -   name: show contents of file
-            run: ls -ltr
-       
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-            
-        
+      - name: Display message
+        run: echo "hello world 123"
 
+      - name: Show contents of repo
+        run: ls -ltr
