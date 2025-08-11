@@ -19,3 +19,7 @@ jobs:
           
       - name: Generate ASCII Artwork
         run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+      - name: test if the file exists
+        run: grep -i "drgeon" dragon.txt
+      - name: test if the file exists
+        run : ls-ltra
