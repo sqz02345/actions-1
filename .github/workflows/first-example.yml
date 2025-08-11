@@ -22,4 +22,4 @@ jobs:
       - name: test if the file exists
         run: grep -i "dragon" dragon.txt
       - name: test if the file exists
-        run : ls-ltra
+        run : ls -ltra
