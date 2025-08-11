@@ -3,19 +3,19 @@ name: my first github project
 on: push
 
 jobs:
-  first_job:
+  ascii_job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Display message
+      - name: Display message and installs ascii packages
         run: |
           echo "hello world"
           ls -ltra
-      - name: Install Cowsay
-        run: |
           sudo apt-get update
           sudo apt-get install -y cowsay
+      
+          
       - name: Generate ASCII Artwork
         run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
