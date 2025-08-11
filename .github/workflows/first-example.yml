@@ -13,5 +13,6 @@ jobs:
         run: |
           echo "hello world"
           ls -ltra
-
+      - name: generate ascii
+        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
     
