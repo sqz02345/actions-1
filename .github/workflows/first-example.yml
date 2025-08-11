@@ -7,11 +7,11 @@ jobs:
         runs-on :  ubuntu-latest
         steps:
         -   name: display message
-            run : echo "hello world 123"
+            run: echo "hello world 123"
         -   name: show contents of file
-            run : ls -ltr
+            run: ls -ltr
         -   name: Read file
-            run : cat README.md
+            run: cat README.md
 
             
         
