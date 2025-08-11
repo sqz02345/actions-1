@@ -1,4 +1,4 @@
-name: my first github project
+name: Generate ascii workflow
 
 on: push
 
