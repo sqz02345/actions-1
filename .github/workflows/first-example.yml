@@ -4,7 +4,7 @@ on: push
 
 jobs:
     first_job:
-        runs-on :  ubuntu_latest
+        runs-on :  ubuntu-latest
         steps:
         -   name: display message
             run : echo "hello world 123"
