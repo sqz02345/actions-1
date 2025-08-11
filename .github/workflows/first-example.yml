@@ -10,5 +10,9 @@ jobs:
             run : echo "hello world 123"
         -   name: show contents of file
             run : ls -ltr
+        -   name: Read file
+            run : cat README.md
+
+            
         
 
