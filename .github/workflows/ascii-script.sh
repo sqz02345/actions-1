@@ -1,8 +1,13 @@
-#/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
+
 echo "hello world"
-ls - ltra
+ls -altr
+
 sudo apt-get update
 sudo apt-get install -y cowsay
-cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+
+cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" | tee dragon.txt
 grep -i "dragon" dragon.txt
-ls - ltra
+
+ls -altr
