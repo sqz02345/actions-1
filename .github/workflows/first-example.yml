@@ -15,10 +15,19 @@ jobs:
           ./ascii-script.sh
 
   test_job2:
+    needs: build_job1
     runs-on: ubuntu-latest
     steps:
       - name: sleep 30 seconds
         run: sleep 30
       - name: test file exists
         run: grep -i "dragon" dragon.txt
+
+  deploy_job3:
+    needs: test_job2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read File
+        run:  cat dragon.txt
+     
 
