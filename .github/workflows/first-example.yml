@@ -13,14 +13,12 @@ jobs:
         run: |
           chmod +x ./ascii-script.sh
           ./ascii-script.sh
-      
+
       - name: Upload Dragon text file
         uses: actions/upload-artifact@v4
         with:
           name: gragon-txt-file
-          path: dragon.txt
-      
-      
+          path: .github/workflows/dragon.txt  # <-- correct location
 
   test_job2:
     needs: build_job1
@@ -30,8 +28,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: gragon-txt-file
-        
-      
+          path: .                               # <-- put file in CWD
+
       - name: test file exists
         run: grep -i "dragon" dragon.txt
 
@@ -39,11 +37,11 @@ jobs:
     needs: test_job2
     runs-on: ubuntu-latest
     steps:
-    - name: Download Dragon text file
-    - uses: actions/download-artifact@v4
-      with:
+      - name: Download Dragon text file
+        uses: actions/download-artifact@v4
+        with:
           name: gragon-txt-file
-    - name: Read File
-      run:  cat dragon.txt
-     
+          path: .
 
+      - name: Read File
+        run: cat dragon.txt
