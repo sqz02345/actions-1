@@ -9,17 +9,5 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Display message and installs ascii packages
-        run: |
-          echo "hello world"
-          ls -ltra
-          sudo apt-get update
-          sudo apt-get install -y cowsay
-      
-          
-      - name: Generate ASCII Artwork
-        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-      - name: test if the file exists
-        run: grep -i "dragon" dragon.txt
-      - name: test if the file exists
-        run : ls -ltra
+      - name: executing shell script
+        run: .ascii-shell-script.sh
