@@ -15,7 +15,7 @@ jobs:
           ./ascii-script.sh
       
       - name: Upload Dragon text file
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: gragon-txt-file
           path: dragon.txt
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Dragon text file
-      - uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4
         with:
           name: gragon-txt-file
         
