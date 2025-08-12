@@ -1,3 +1,4 @@
+#/bin/sh
 echo "hello world"
 ls - ltra
 sudo apt-get update
