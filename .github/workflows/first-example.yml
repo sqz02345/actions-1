@@ -3,7 +3,7 @@ name: Generate ascii workflow
 on: push
 
 jobs:
-  ascii_job:
+  build_job1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,3 +13,15 @@ jobs:
         run: |
           chmod +x ./ascii-script.sh
           ./ascii-script.sh
+
+  test_job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sleep 30 seconds
+        run: sleep 30
+  
+  deploy_job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test file exists
+        run: grep -i "dragon" dragon.txt
