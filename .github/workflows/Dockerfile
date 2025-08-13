@@ -1,7 +1,36 @@
-# .github/workflows/Dockerfile
-FROM nginx:alpine
-# Write a minimal page directly into the image (no site/ folder required)
-RUN printf '<!doctype html><html><head><meta charset="utf-8"><title>NGINX via GitHub Actions</title></head><body><h1>✅ It works!</h1><p>Built & pushed from GitHub Actions.</p></body></html>' > /usr/share/nginx/html/index.html
-# Optional healthcheck (busybox wget is available in this image)
-HEALTHCHECK CMD wget -qO- http://localhost:80/ >/dev/null || exit 1
-EXPOSE 80
+name: Docker build & push
+on: push
+
+env:
+  IMAGE_NAME: github-actions.nginx
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Sanity check files
+        run: |
+          pwd
+          ls -la
+          ls -la .github/workflows
+          test -f .github/workflows/Dockerfile || (echo "Missing .github/workflows/Dockerfile" && exit 1)
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .github/workflows      # build context = folder where the Dockerfile is
+          file: Dockerfile                # relative to context above
+          push: true
+          tags: |
+            ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
